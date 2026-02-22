@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const MovieHome = () => {
@@ -22,7 +23,8 @@ const MovieHome = () => {
                 return(
               
   <div key={index}  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-    <Image
+    <Link href={`/${singlemovie.id}`}>
+          <Image
       src={`https://image.tmdb.org/t/p/w500${singlemovie.poster_path}`}
       alt={singlemovie.title}
       width={300}
@@ -35,6 +37,8 @@ const MovieHome = () => {
       <p className="text-sm text-gray-500 mt-2 line-clamp-3">{singlemovie.overview}</p>
       <p className="text-sm font-semibold text-yellow-500 mt-3">⭐ {singlemovie.popularity}</p>
     </div>
+    </Link>
+   
  
 </div>
                 )
