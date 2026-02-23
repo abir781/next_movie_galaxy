@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Nowrender = async() => {
@@ -11,8 +12,11 @@ const Nowrender = async() => {
      return (
     <div className="grid grid-cols-4 gap-6 p-6">
       {data.results?.map((movie) => (
+
         <div key={movie.id} className="bg-white rounded-xl shadow-md overflow-hidden">
-          <Image
+          <Link href={`/now-playing/singlenow/${movie.id}`}>
+
+                 <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
             width={300}
@@ -23,6 +27,8 @@ const Nowrender = async() => {
             <p className="text-sm text-gray-500 line-clamp-3">{movie.overview}</p>
             <p className="text-sm font-semibold text-yellow-500 mt-2">⭐ {movie.popularity}</p>
           </div>
+          </Link>
+          
         </div>
       ))}
     </div>
