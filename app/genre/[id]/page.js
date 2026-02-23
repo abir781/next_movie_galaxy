@@ -2,10 +2,13 @@ import React from 'react';
 import Genrebasedpage from './Genrebasedpage';
 
 const Singlegenrepage = async({params}) => {
+
+    const {id}= await params;
+   
     
     return (
         <div>
-            <Genrebasedpage params={params}></Genrebasedpage>
+            <Genrebasedpage id={id}></Genrebasedpage>
         </div>
     );
 };
