@@ -21,6 +21,10 @@ const FeedBack = () => {
 
 
     }
+
+    const graveofthefirflies =()=>{
+        
+    }
     return (
     <div className="flex  justify-center min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-6">
       
@@ -78,22 +82,43 @@ const FeedBack = () => {
   Add
 </button>
 
-<ul>
+<ul className="w-full max-w-xl mx-auto mt-6 space-y-4">
+  {
+    rendertextdata.map((renders, index) => {
+      return (
+        <div key={index} className="flex items-center gap-4">
+  <li
+    className="
+      px-6
+      py-4
+      bg-white
+      rounded-2xl
+      shadow-md
+      border border-gray-200
+      text-gray-700
+      text-lg
+      font-medium
+      transition-all
+      duration-300
+      hover:shadow-xl
+      hover:scale-[1.02]
+      hover:bg-indigo-50
+      flex
+      gap-4
+      flex-1
+    "
+  >
+    {renders}
+  </li>
 
-    {
-    rendertextdata.map((renders,index)=>{
-         return(
-
-            <li key={index}>{renders}</li>
-           
-        )
-
-    }
-       
-    )
-}
-
-
+  <button onClick={graveofthefirflies} className="bg-amber-500 px-4 py-2 rounded-lg">
+    X
+  </button>
+</div>
+      
+      );
+    })
+  }
 </ul>
 
 

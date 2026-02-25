@@ -6,6 +6,22 @@ import React, { useEffect, useState } from 'react';
 const MovieHome = () => {
     const [movies,setmovies]= useState([]);
     const [search,setsearch]=useState("");
+    const [pagenumber,setpagenumber] = useState(1);
+
+    const setpagination=(n)=>{
+
+      setpagenumber(n);
+
+    }
+ const buttons = [
+  { number: 1 },
+  { number: 2 },
+  { number: 3 },
+  { number: 4 },
+  { number: 5 },
+  { number: 6 },
+  { number: 7 },
+];
 
     const searchfun = (e)=>{
      
@@ -15,14 +31,14 @@ const MovieHome = () => {
 
     useEffect(()=>{
 
-        fetch("https://api.themoviedb.org/3/movie/popular?api_key=e0b1a5f59bc00cdc9da099c36c7fb253")
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=e0b1a5f59bc00cdc9da099c36c7fb253&page=${pagenumber}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
             setmovies(data.results);
         });
 
-    },[])
+    },[pagenumber])
 
      const filteredItems = movies.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
@@ -90,6 +106,41 @@ const MovieHome = () => {
           }
            
             
+        </div>
+
+        <div className='flex gap-8 justify-center mt-7 mb-7'>
+          {
+            buttons.map((singlebutton,index)=>{
+              return(
+           <button
+  onClick={() => setpagination(singlebutton.number)}
+  key={singlebutton.number}
+  className={`
+    px-4
+    py-2
+    min-w-[42px]
+    rounded-xl
+    border
+    font-medium
+    shadow-sm
+    transition-all
+    duration-200
+    active:scale-95
+    ${
+      pagenumber === singlebutton.number
+        ? "bg-indigo-600 text-white border-indigo-600 shadow-md"
+        : "bg-white text-gray-700 border-gray-300 hover:bg-indigo-500 hover:text-white hover:border-indigo-500"
+    }
+  `}
+>
+  {singlebutton.number}
+</button>
+            )})
+
+          }
+        
+          
+
         </div>
         
       </div>
