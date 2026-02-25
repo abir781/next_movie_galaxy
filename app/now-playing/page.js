@@ -1,11 +1,12 @@
 import React from 'react';
 import Nowrender from './Nowrender';
 
-const Nowpage = () => {
+const Nowpage = async({ searchParams }) => {
+     const params = await searchParams;
     return (
         <div>
 
-            <Nowrender></Nowrender>
+            <Nowrender searchParams={params}></Nowrender>
             
         </div>
     );

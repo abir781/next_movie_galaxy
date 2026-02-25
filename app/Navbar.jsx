@@ -12,6 +12,7 @@ export default function Navbar() {
     { name: "Top Rated", path: "/top-rated" },
     
     { name: "Now Playing", path: "/now-playing" },
+    { name: "FeedBack", path: "/feedback" }
   ];
 
   return (
